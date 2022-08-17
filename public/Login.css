@@ -1,0 +1,23 @@
+.copyright-wrap{
+	position: absolute;
+	bottom: 300px;
+	left: 350px;
+}
+.copyright-wrap span img{
+	width: 350px;
+	height: 350px;
+}
+
+.kakaologin{
+    position: absolute;
+    bottom: 350px;
+    left: 700px;
+    height: 150px;
+}
+
+.kakaologout{
+    position: absolute;
+    bottom:280px;
+	left: 700px;
+    height: 150px;
+}

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="public/index.css">
+    <script language = "javascript">
+        for(var i; i<100; i++){
+        temp = decodeURI(document.location.href.split("?")[1])
+        data=temp.split(":");
+        title[i] = data[0];
+        address[i] = data[1];
+        name[i] = data[2];
+        timecoin[i] = data[3];
+        gender[i] = data[4];
+        content[i] = data[5];
+        day[i] = data[6];}
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Gaegu&family=Gamja+Flower&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+    <div class="wrap">
+        <div class="outerbox" >
+            <div class="innerbox">
+                <h2 class="main">HELP LIST</h2>
+                <div class="mainbox">
+                    <table id="table1">
+                        <tr id ="fields" class="tb">
+                            <td class="td0">
+                                <span>삭제</span>
+                            
+                            </td>
+                            <td class="td2">제목</td>
+                            <td class="td1">작성자</td>
+                            <td class="td3">희망성별</td>
+                            <td class="td4">요청 날짜</td>
+                            <td class="td5">적립시간</td>
+                        </tr>
+                        <tr>
+                        <td class="td0"><input  name="del" type="button" value="삭제" ></td>
+                        <td class="td2"><script> document.write(title[i]) </script></td>
+                        <td class="td1"><script> document.write(name[i])</script></td>
+                        <td class="td3"><script> document.write(gender[i])</script></td>
+                        <td class="td4"><script> document.write(day[i])</script></td>
+                        <td class="td5"><script> document.write(timecoin[i])</script></td>
+                        </tr>
+                        
+                        <!-- <tr class="tb">
+                        <script>
+                            for(let i=0;i<list.length;i++){
+                            <td class="td1">+list[i].idx+</td>
+                            document.write('<td class="td0"><input  name="chk" type="checkbox" ></td>')
+                            document.write(<td class="td1">list[i].idx</td>)
+                            document.write('<td class="td2">'+list[i].title+'</td>')
+                            document.write('<td class="td3">'+list[i].name+'</td>')
+                            document.write('<td class="td3">'+list[i].today+'</td>')
+                            document.write('<td class="td3">'+list[i].hit+'</td>')   
+                            }
+                        </script>
+                        </tr> -->
+                        <!-- {% for item in help_db %}
+                        <tr class="tb">
+                            <td class="td0"><input  name="chk" type="checkbox" ></td>
+                            <td class="td1">{{item.idx2}}</td>
+                            <td class="td2" id="aa"><a href="/view?idx={{item.idx}}">{{item.title}}</a></td>
+                            <td class="td3">{{item.name}}</td>
+                            <td class="td4">{{item.today}}</td>
+                            <td class="td5">{{item.hit}}</td>
+                        </tr>
+                        {% endfor %} -->
+                    </table>
+                    <div class="btnbox">
+                        <a href="/"><button class="btn">돌아가기</button></a>
+                        <a href="write.html"><button class="btn">도움 요청하기</button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script type="text/javascript">
+        let check = false;
+        // function checkAll(){
+        //     let chk = document.getElementsByName("chk[]");
+        //     console.log(chk);
+        //     if(check==false){
+        //         check=true;
+        //         for(let i=0; i<chk.length; i++){
+        //             chk[i].checked=true;
+        //         }
+        //     }else{
+        //         check=false;
+        //         for(let i=0; i<chk.length; i++){
+        //             chi[i].checked=false;
+        //         }
+        //     }
+        // }
+
+        function checkAll(checkAll){
+            let checkboxes=document.getElementsByName("chk");
+            console.log(checkboxes);
+            checkboxes.forEach((checkbox)=>{
+                checkbox.checked=checkAll.checked;
+            })
+        }
+
+        function getInfo() {
+            helplist.request({
+                   
+                    success: function (res) {
+                        console.log(res);
+                        // 이메일, 성별, 닉네임, 프로필이미지
+                        var title = helplist.title;
+                        var email = res.kakao_account.email;
+                        var gender = res.kakao_account.gender;
+                        var nickname = res.kakao_account.profile.nickname;
+                        var profile_image = 
+            document.write(title)
+            alert(title);
+            }
+            })
+        }
+    
+    </script>
+</body>
+</html>

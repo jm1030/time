@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <title>Employees</title>
+    <style>
+      body {
+        font-family: Consolas, monospace;
+        font-family: 12px;
+      }
+      table {
+        width: 100%;
+      }
+      th, td {
+        padding: 10px;
+        border-bottom: 1px solid #dadada;
+      }
+    </style>
+  </head>
+  <body>
+    <table>
+      <thead>
+        <tr>
+          <th>emp_no</th>
+          <th>first_name</th>
+          <th>last_name</th>
+          <th>hire_date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php
+          $jb_conn = mysqli_connect( 'localhost', 'username', 'password', 'employees' );
+          $jb_sql = "SELECT * FROM employees LIMIT 5;";
+          $jb_result = mysqli_query( $jb_conn, $jb_sql );
+          while( $jb_row = mysqli_fetch_array( $jb_result ) ) {
+            echo
+              '<p>'
+              . $jb_row[ 'emp_no' ]
+              . $jb_row[ 'first_name' ]
+              . $jb_row[ 'last_name' ]
+              . $jb_row[ 'hire_date' ]
+              . '</p>'
+            ;
+          }
+        ?>
+      </tbody>
+    </table>
+  </body>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="public/index.css">
+    <script type="text/javascript">
+        function val (){
+        var title_tx = document.getElementById("title_tx");
+        var address_tx = document.getElementById("address_tx");
+        var name_tx = document.getElementById("name_tx");
+        var timecoin_tx = document.getElementById("timecoin_tx");
+        var gender_tx = document.getElementById("gender_tx");
+        var content_tx = document.getElementById("content_tx");
+
+        if(title_tx.value==""){
+            alert("제목을 입력해주세요");
+            event.preventDefault();
+        } else if(address_tx.value==""){
+            alert("주소를 입력해주세요");
+            event.preventDefault();
+        } else if(name_tx.value==""){
+            alert("이름을 입력해주세요");
+            event.preventDefault();
+        } else if(timecoin_tx.value==""){
+            alert("적립시간을 입력해주세요");
+            event.preventDefault();
+        } else if(gender_tx.value==""){
+            alert("희망성별을 입력해주세요");
+            event.preventDefault();
+        } else if(content_tx.value==""){
+            alert("내용을 입력해주세요");
+            event.preventnDefault();
+        } else{
+            sendFunc();
+        }
+        
+    }
+        function enter(){
+        if(window.event.keyCode ==13){
+            alert("d");
+        document.getElementsByName("content").innerHTML+="<br/>";
+        }
+        }
+        function openMap(){
+        window.name = "addressForm";
+        oepnWin = window.open("helpmap.html", "mapForm", "width=570, height=350, resizable = no, scrollbars = no");
+        }
+       
+        function sendFunc()
+        {
+            title=title_tx.value;
+            address=address_tx.value;
+            name = name_tx.value;
+            timecoin=timecoin_tx.value;
+            gender=gender_tx.value;
+            content=content_tx.value;
+            day = day_tx.value;
+
+            location.href="view.html?"+title+":"+address+":"+name+":"+timecoin+":"+gender+":"+content+":"+day;
+        }
+        function send(){
+            title=title_tx.value;
+            address=address_tx.value;
+            name = name_tx.value;
+            timecoin=timecoin_tx.value;
+            gender=gender_tx.value;
+            content=content_tx.value;
+            day = day_tx.value;
+
+            location.href="board.html?"+title+":"+address+":"+name+":"+timecoin+":"+gender+":"+content+":"+day;
+        
+        }
+        
+    </script>
+</head>
+<body>
+    <div class="wrap">
+        <div class="outerbox" >
+            <div class="innerbox">
+                <h2 class="main"> 도움 요청하기</h2>
+                <!--<form method="post"  action="http://localhost:3000/writedone">-->
+                    <button type=submit name = "name" disabled onclick="enter()"; style="display:none;"></button> 
+                    <div class="mainbox">
+                        <div class="subbox">
+                            <div class="subsubbox">
+                                <span class="tit">제목 :</span>
+                            </div>
+                            <input id="title_tx" class ="txbox" type="text" name="title"> 
+
+                        </div>
+                        <div class="wribox">
+                            <div class="subsubbox">
+                            <span class="address">주소 :</span>
+                                </div>
+                            <input id="address_tx" class = "txbox" name="address" type="ad_button" value="지도 열기" onclick="openMap()">                            <br/>
+                        </div>
+                        <!--전달할 값 : <input type="text" id="pInput">-->
+                        <div class="wribox">
+                                <div class="subsubbox">
+                            <span class="name">작성자 :</span>
+                                </div>
+                            <input id="name_tx" class = "txbox" type="text" name="name">
+                            <br/>
+                        </div>
+                        <div class="wribox">
+                            <div class="subsubbox">
+                        <span class=day>요청 날짜 :</span>
+                            </div>
+                        <input id="day_tx" class = "txbox" type="text" name="day">
+                    <br/>
+                    </div>
+                        <div class="wribox">
+                                <div class="subsubbox">
+                            <span class=timecoin>적립시간 :</span>
+                                </div>
+                            <input id="timecoin_tx" class = "txbox" type="text" name="timecoin">
+                        <br/>
+                        </div>
+                        <div class="wribox">
+                                <div class="subsubbox">
+                                <span class="gender">희망 성별 :</span>
+                                </div>
+                            <input id="gender_tx" class = "txbox" type="text" name="gender" placeholder="남/여">
+                        <br/>
+                        </div>
+                        <div class="d">
+                            <div class="subsubbox">
+                                <span class="con">내용 :</span>
+                            </div>
+                            <input id="content_tx" onckeyup="enter()" class = "conbox" type="textbox" name="content"> 
+                        </div>
+                    </div>
+
+                    <div class="btnbox">       
+                        <button class="btn" onclick="send()">돌아가기</button></a>
+                        <input class ="btn" type="submit" value="글작성" onclick="val();">
+                        <!--<a href="view.html"><button class="btn">글 작성</button></a>-->
+                    </div> 
+                <!--</form>-->
+            </div>
+        </div>
+    </div>
+    
+    
+</body>
+</html>

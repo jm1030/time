@@ -1,0 +1,168 @@
+<html>
+<head>
+<title>Login</title>
+
+	<title>Login</title>
+  <link href="css/Login.css" rel="stylesheet" type="text/css" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  <title>Freelancer - Start Bootstrap Theme</title>
+  <!-- Favicon-->
+  <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+  <!-- Font Awesome icons (free version)-->
+  <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+  <!-- Google fonts-->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+  <!-- Core theme CSS (includes Bootstrap)-->
+  <link href="public/styles.css" rel="stylesheet" />
+
+
+</head>
+ 
+<body>
+
+  <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">TIME BANK</a>
+        <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            Menu
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#portfolio">List</a></li>
+                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="map.html">MAP</a></li>
+                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#contact">HELP</a></li>
+                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="Login.html">Login</a></li>
+                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="Login.html">Logout</a></li>
+                
+
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+  <div class="copyright-wrap">
+    <span>	<img src="assets/img/time bank ikon.png.jpg"></span>
+  </div>
+  
+  <div class="kakaologin">
+    <a href="javascript:kakaoLogin();"> <button type="button"> <img src="assets/img/kakao_login.png"alt=""></button></a>
+  </div>
+  <div class="kakaologout">
+    <a href="javascript:kakaoLogout();"><button type="button"> <img src="assets/img/kakao_login.png"alt=""></button></a>
+  </div>
+   
+    <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+    <script>
+        window.Kakao.init('8deae424850aec182cc73295702e0502');
+        loginchek = False
+        function kakaoLogin() {
+            window.Kakao.Auth.login({
+                scope: 'profile_nickname, profile_image', //동의항목 페이지에 있는 개인정보 보호 테이블의 활성화된 ID값을 넣습니다.
+                success: function(response) {
+                    console.log(response) // 로그인 성공하면 받아오는 데이터
+                    window.Kakao.API.request({ // 사용자 정보 가져오기 
+                        url: '/v2/user/me',
+                        success: (res) => {
+                            const kakao_account = res.kakao_account;
+                            console.log(kakao_account)
+                            loginchek = True
+                        }
+                    });
+                    // window.location.href='/ex/kakao_login.html' //리다이렉트 되는 코드
+                },
+                fail: function(error) {
+                    console.log(error);
+                }
+            });
+        }
+
+        function kakaoLogout() {
+            if (!Kakao.Auth.getAccessToken()) {
+                console.log('Not logged in.');
+                return;
+            }
+            Kakao.Auth.logout(function(response) {
+                alert(response +' logout');
+                window.location.href='/'
+                loginchek = False
+            });
+        };
+    
+
+
+    </script>
+    <!--<ul>
+        <li onclick="kakaoLogin();">
+          <a href="javascript:void(0)">
+              <span>카카오 로그인</span>
+          </a>
+        </li>
+        <li onclick="kakaoLogout();">
+          <a href="javascript:void(0)">
+              <span>카카오 로그아웃</span>
+          </a>
+        </li>
+    </ul> 
+  -->
+    <!--<a href="javascript:kakaoLogin();"><img src="./kakao_login.png" alt="카카오계정 로그인" style="height: 100px;"/></a>
+    -->
+    <!-- 카카오 스크립트 
+    <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+    <script>
+    window.Kakao.init('8deae424850aec182cc73295702e0502'); //발급받은 키 중 javascript키를 사용해준다.
+    console.log(Kakao.isInitialized()); // sdk초기화여부판단
+    //카카오로그인
+    function kakaoLogin() {
+        window.Kakao.Auth.login({
+          scop: 'profile_nickname,profile_image',
+          success: function (response) {
+            console.log(response)
+            window.Kakao.API.request({
+              url: '/v2/user/me',
+              success: function (response){
+                //(res) => 
+                    const kakao_account = res.kakao_account;
+                    console.log(kakao_account)
+              },
+              //fail: function (error) {
+               // console.log(error)
+              //},
+            })
+          },
+          fail: function (error) {
+            console.log(error)
+          },
+        })
+      }
+    //카카오로그아웃  
+    function kakaoLogout() {
+        if (!Kakao.Auth.getAccessToken()) {
+            console.log('Not logged in.');
+            return;
+        }
+        Kakao.Auth.logout(function(response){
+            alert(response + ' logout');
+            window.location.href='/'
+        })
+   
+           // Kakao.API.request({
+           // url: '/v1/user/unlink',
+            /*success: function (response) {
+                console.log(response)
+            },
+            fail: function (error) {
+              console.log(error)
+            },
+          })
+          Kakao.Auth.setAccessToken(undefined)
+        }*/
+    }  
+    </script>-->
+</body>
+</html>

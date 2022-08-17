@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="public/index.css">
+    
+        <script language = "javascript">
+        temp = decodeURI(document.location.href.split("?")[1])
+        data=temp.split(":");
+        title = data[0];
+        address = data[1];
+        name = data[2];
+        timecoin = data[3];
+        gender = data[4];
+        content = data[5];
+        day=data[6];
+        //document.write(name + " " + content);
+        //document.write(title +", " + address + ", " + name);  
+        //document.getElementById("title").value= data[0];
+        //document.getElementById("address").value= address;
+        
+        function send(){
+            location.href="board.html?"+title+":"+address+":"+name+":"+timecoin+":"+gender+":"+content+":"+day;
+        }
+
+        </script>
+         <style>
+            body{
+                background-image:url('assets/img/view_back.png');
+                background-size: cover;
+            }
+            </style>
+    
+</head>
+<body>
+    <style>
+    background-image:url('assets\img\view_back.png');</style>
+    <div class="wrap">
+        <div class="outerbox" >
+            <div class="innerbox">
+                    <h2 class="main">도움 요청서</h2>
+                    <div class="mainbox1">
+                            <div class="subbox">
+                                <div class="subsubbox">
+                                    <span class="tit">제목 :</span>
+                                </div>
+                                <script>document.write(title)</script>
+                                <!-- <input id="title_tx" class = "txbox" type="text" name="title" disabled >  -->
+    
+                            </div>
+                            <div class="wribox">
+                                <div class="subsubbox">
+                                <span class="wri">주소 :</span>
+                                    </div>
+                                    <script>document.write(address)</script>
+                                <!-- <input id="address_tx" class = "txbox" type="text" name="address" disabled > -->
+                                                          <br/>
+                            </div>
+                            <div class="wribox">
+                                    <div class="subsubbox">
+                                <span class="wri">작성자 :</span>
+                                    </div>
+                                    <script>document.write(name)</script>
+                                <!-- <input class = "txbox" type="text" name="name"  disabled> -->
+                                <br/>
+                            </div>
+                            <div class="wribox">
+                                    <div class="subsubbox">
+                                <span class="timecoin">적립시간 :</span>
+                                    </div>
+                                    <script>document.write(timecoin)</script>
+                                <!-- <input class = "txbox" type="text" name="timecoin" disabled> -->
+                                <br/>
+                            </div>
+                            <div class="wribox">
+                                    <div class="subsubbox">
+                                <span class="gen">희망 성별 :</span>
+                                    </div>
+                                    <script>document.write(gender)</script>
+                                <!-- <input class = "txbox" type="text" name="gender" disabled> -->
+                                <br/>
+                            </div>
+                            <div class="d">
+                                <div class="subsubbox">
+                                    <span class="con">내용 :</span>
+                                </div>
+                                <script>document.write(content)</script>
+                                <!-- <input class = "conbox" type="text"   disabled  name="content" > -->
+                                   
+                            </div>
+                    </div>
+
+                <div class="btnbox3">   
+                    <button class="btn" onclick="send()">뒤로가기</button>
+                    <a href="/modify?idx={{view_db.idx}}"><button class="btn">수정하기</button></a>
+                    <a href="/delete?idx={{view_db.idx}}"><button class="btn">삭제하기</button></a>
+                    <!--<a href="modify.html"><button class="btn">수정하기</button></a>
+                    <a href="board.html"><button class="btn">삭제하기</button></a>-->
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

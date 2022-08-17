@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="public/index.css">
+    <script type="text/javascript">
+        function val (){
+            var title_tx = document.getElementById("title_tx");
+            var address_tx = document.getElementById("address_tx");
+            var name_tx = document.getElementById("name_tx");
+            var age_tx = document.getElementById("age_tx");
+            var gender_tx = document.getElementById("gender_tx");
+            var content_tx = document.getElementById("content_tx");
+
+            if(title_tx.value==""){
+                alert("제목을 입력해주세요");
+                event.preventDefault();
+            } else if(address_tx.value==""){
+                alert("주소를 입력해주세요");
+                event.preventDefault();
+            } else if(name_tx.value==""){
+                alert("이름을 입력해주세요");
+                event.preventDefault();
+            } else if(age_tx.value==""){
+                alert("나이를 입력해주세요");
+                event.preventDefault();
+            } else if(gender_tx.value==""){
+                alert("성별을 입력해주세요");
+                event.preventDefault();
+            } else if(content_tx.value==""){
+                alert("내용을 입력해주세요");
+                event.preventDefault();
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="wrap">
+        <div class="outerbox" >
+            <div class="innerbox">
+                <h2 class="main"> 글 수정하기 </h2>
+                <form method="post" action="/modifydone">
+                    <button disabled type=submit onclick="return flase;" style="display:none;"></button> <!--enter하면 입력되지 않도록 방지-->
+                    <div class="mainbox">
+                        <div class="subbox">
+                            <div class="subsubbox">
+                                <span class="sub">글 번호 :</span>
+                            </div>
+                            <input class="txbox" type="text" name="idx" value="{{modify_db.idx}}" readonly >
+                        </div>
+                        <div class="subbox">
+                            <div class="subsubbox">
+                                <span class="tit">제목 :</span>
+                            </div>
+                            <input id="stitle_tx" class ="txbox" type="text" name="title" value="{{modify_db.title}}"> 
+                        </div>
+                        <div class="wribox">
+                            <div class="subsubbox">
+                            <span class="wri">주소 :</span>
+                                </div>
+                            <input id="address_tx" class = "txbox" name="address" type="text" value="{{modify_db.address}}">                            <br/>
+                        </div>
+                        <div class="wribox">
+                                <div class="subsubbox">
+                            <span class="wri">작성자 :</span>
+                                </div>
+                            <input id="name_tx" class = "txbox" type="text" name="name" value="{{modify_db.name}}">
+                            <br/>
+                        </div>
+                        <div class="wribox">
+                                <div class="subsubbox">
+                            <span class="age">나이 :</span>
+                                </div>
+                            <input id="age_tx" class = "txbox" type="text" name="age" value="{{modify_db.age}}">
+                        <br/>
+                        </div>
+                        <div class="wribox">
+                                <div class="subsubbox">
+                            <span class="gen">성별 :</span>
+                                </div>
+                            <input id="gender_tx" class = "txbox" type="text" name="gender" value="{{modify_db.gender}}">
+                        <br/>
+                        </div>
+                        <div class="d">
+                            <div class="subsubbox">
+                                <span class="con">내용 :</span>
+                            </div>
+                            <input id="content_tx" onckeyup="enter()" class = "conbox" type="textbox" name="content" value="{{modify_db.content}}"> 
+                                    
+                        </div>
+                    </div>
+
+
+                    <div class ="btnbox2">
+                        <a href="board.html"><button class ="btn">돌아가기</button></a>
+                        <input class ="btn" type="submit" value="글 수정 완료" onclick="val()">
+                        <!--<a href="view.html"><button class ="btn">글 수정 완료</button></a>-->
+                    </div>
+                </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>
